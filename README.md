@@ -3,44 +3,55 @@
 Simple Collection of Scripts Where You can Paste a Prompt and then Choose
 Models — the runner prepares everything for you.
 
-Batch-test models with [opencode](https://opencode.ai): one prompt, many models,
-each model builds in its own folder. Prompt in, results out, one command.
+Batch-test models with [opencode](https://opencode.ai): one prompt, many
+models, each model builds in its own folder. Prompt in, results out, one
+command.
 
-## Use it
+```
+prompt.txt ─┐                         ┌─ Projects/<model folder>/   ← built page
+models.txt ─┼─ run-test.sh ── runs each model → report + summary + popup
+```
 
-1. **Fill `prompt.txt`** with any instructions (plain text; replace the example).
-2. **Fill `models.txt`**, one model per line — both formats work, `#` comments are skipped:
+## Quickstart
 
-   ```
-# simple: folder name is derived from the model slug
-opencode/glm-5.3-flash-free
-# custom folder name:
-Dashain Deepseek|opencode/deepseek-v4.1-flash-free
-   ```
+```bash
+# 1. Write your instructions in prompt.txt (sent verbatim to every model).
+#    Name the files you want (e.g. index.html, style.css, script.js).
+# 2. Fill models.txt, one model per line — both forms work:
+#
+#    opencode/glm-5.3-flash-free            # folder: glm-5.3-flash-free
+#    Tihar GLM 5.3|opencode/glm-5.3-flash-free   # folder: Tihar GLM 5.3
+#
+# 3. Preview everything at zero cost:
+./run-test.sh --dry
 
-3. **Run:**
+# 4. Run the batch (sequential, one session per model):
+./run-test.sh
+```
 
-   ```bash
-   ./run-test.sh                                  # prompt.txt + models.txt
-   ./run-test.sh --dry                            # preview everything, zero quota
-   ./run-test.sh --prompt prompt-dashain.txt --models models-dashain.txt
-   ```
+Then open `Projects/<model folder>/index.html` in a browser — every build is
+self-contained and works offline. Failed runs never stop the batch; when it
+finishes you get a terminal summary, `Projects/last-batch-report.txt`, and a
+desktop notification where `notify-send` exists.
 
-Each model builds inside its own folder under `Projects/<folder name>/`.
-Nothing is committed or pushed automatically — you review first.
+## Example — what a run produces
 
-## Output
+The `Projects/` folder in this repo holds real outputs built from the Tihar
+prompt (`prompt.txt`):
 
-- One folder per model in `Projects/` (with whatever files the model created).
-- `Projects/last-batch-report.txt` — one status line per model, overwritten per batch.
-- A terminal summary and (Linux) a desktop notification when the batch finishes.
-- A failed model never stops the batch — every model gets its turn.
+| Model | Output | Page |
+|---|---|---|
+| `opencode/glm-5.3-flash-free` | [`Projects/glm-5.3-flash-free/`](./Projects/glm-5.3-flash-free/index.html) | "Happy Tihar 🪔 — The Festival of Lights" |
+| `opencode/deepseek-v4.1-flash-free` | [`Projects/deepseek-v4.1-flash-free/`](./Projects/deepseek-v4.1-flash-free/index.html) | "Happy Tihar 🪔 — A Story of Light" |
+
+Same prompt, two models — open each `index.html` and compare.
 
 ## Notes
 
-- Requires `opencode` CLI (`opencode models` lists available ids as `provider/model`).
-- Linux/macOS/WSL (bash). `notify-send` optional.
-- For other test themes, keep `prompt` and model list pairs side by
-  side as plain files: `prompt-<theme>.txt` + `models-<theme>.txt`,
-  then run with:
+- Requires the `opencode` CLI (`opencode models` lists ids as `provider/model`),
+  bash (Linux/macOS/WSL), and nothing else — stdlib only.
+- For other test themes keep a prompt/model pair: `prompt-<theme>.txt` +
+  `models-<theme>.txt`, then
   `./run-test.sh --prompt prompt-<theme>.txt --models models-<theme>.txt`.
+- The runner never commits or pushes model output itself — you review the
+  folders first, then commit.
