@@ -1,0 +1,37 @@
+Build an interactive, eye-catching website to wish someone
+"Happy Dashain 🪔" — and it must tell a short story with real meaning,
+not just a plain wish.
+
+STRICT RULES (read first):
+- Work ONLY inside the current project folder. Do not read, list, open, or
+  modify any file or directory outside it.
+- Do not use anything from my PC: no files, configs, environment variables,
+  installed projects, or saved credentials outside this folder.
+- Do not run commands that touch anything outside this folder.
+- If you think you need something outside the folder, stop and ask me instead.
+
+TASK:
+Create these three files in the current folder:
+- index.html
+- style.css
+- script.js
+
+REQUIREMENTS:
+1. A striking first screen with a big "Happy Dashain 🪔" greeting and a warm
+   message for the person receiving the wish.
+2. A short STORY woven into the page that carries the meaning of Dashain —
+   for example, why elders give tika and jamara, or the victory of good over
+   evil — told across the visit, scene by scene, not dumped as one paragraph.
+3. An INTERACTIVE experience, for example: falling marigold petals and
+   jamara, a diya that lights up when clicked, a kite or ping (bamboo swing)
+   moment, a tika-and-blessing reveal, and a final personalized wish.
+4. A button labeled "Send a Dashain Wish" that, when clicked, shows a new
+   random blessing and triggers a celebratory burst of petals.
+5. A festive festival palette (crimson reds, marigold orange-yellow, festival
+   gold, soft gradients) and a nice readable font using only system fonts.
+6. No image files — everything drawn with pure CSS or inline SVG.
+7. Responsive: it should look good on both phone and desktop.
+8. Clean, commented code.
+
+When finished, give me a short summary of the files you created and tell me
+how to open it (it should work by simply opening index.html in a browser).
