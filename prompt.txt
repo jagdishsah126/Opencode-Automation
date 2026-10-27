@@ -1,29 +1,6 @@
-Build a simple "Happy Rose Day" web page.
+Replace this with your prompt.
 
-STRICT RULES (read first):
-- Work ONLY inside the current project folder. Do not read, list, open, or
-  modify any file or directory outside it.
-- Do not use anything from my PC: no files, configs, environment variables,
-  installed projects, or saved credentials outside this folder.
-- Do not run commands that touch anything outside this folder.
-- If you think you need something outside the folder, stop and ask me instead.
-
-TASK:
-Create these three files in the current folder:
-- index.html
-- style.css
-- script.js
-
-REQUIREMENTS:
-1. A centered "Happy Rose Day 🌹" heading with a short romantic message.
-2. A rose drawn with pure CSS or inline SVG (no image files).
-3. Soft animated falling rose petals in the background (CSS or JS).
-4. A button labeled "Send a Rose" that, when clicked, shows a new
-   random sweet message and adds a burst of petals.
-5. A romantic color palette (reds, pinks, soft gradients) and a nice
-   readable font using only system fonts.
-6. Responsive: it should look good on both phone and desktop.
-7. Clean, commented code.
-
-When finished, give me a short summary of the files you created and tell me
-how to open it (it should work by simply opening index.html in a browser).
+It is sent to every model in models.txt verbatim.
+Tip: for autonomous builds, say exactly which files to create
+(e.g. index.html, style.css, script.js) and end with how you
+want the result.

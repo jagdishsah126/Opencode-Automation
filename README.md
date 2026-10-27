@@ -37,5 +37,7 @@ Nothing is committed or pushed automatically — you review first.
 
 - Requires `opencode` CLI (`opencode models` lists available ids as `provider/model`).
 - Linux/macOS/WSL (bash). `notify-send` optional.
-- Keep prompts for extra themes as `prompt-<theme>.txt` and their model
-  lists as `models-<theme>.txt` (the dashain pair in this repo is the example).
+- For other test themes, keep `prompt` and model list pairs side by
+  side as plain files: `prompt-<theme>.txt` + `models-<theme>.txt`,
+  then run with:
+  `./run-test.sh --prompt prompt-<theme>.txt --models models-<theme>.txt`.

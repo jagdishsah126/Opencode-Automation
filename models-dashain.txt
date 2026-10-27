@@ -1,6 +1,0 @@
-# Dashain round — only the four models already tested on Rose Day.
-# Format: Folder Name|provider/model
-Dashain Deepseek v4.1|opencode/deepseek-v4.1-flash-free
-Dashain GLM5.3 flash free|opencode/glm-5.3-flash-free
-Dashain Nemotron Lightning|opencode/nemotron-3.5-lightning-free
-Dashain Nemotron super vl|opencode/nemotron-3.5-super-vl-free
