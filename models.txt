@@ -1,6 +1,4 @@
 # models.txt — one line per model ("Name|provider/model" or plain "provider/model").
-# # comments and blank lines are skipped. Get ids via `opencode models`.
-#
-# Examples:
-#   Roseday GLM5.3 flash free|opencode/glm-5.3-flash-free
-#   opencode/deepseek-v4.1-flash-free
+# Blank lines and # comments are skipped. Get ids via `opencode models`.
+opencode/glm-5.3-flash-free
+opencode/deepseek-v4.1-flash-free

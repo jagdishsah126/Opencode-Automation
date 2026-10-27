@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#170a10">
+  <meta name="description" content="An interactive Tihar story about crows, dogs, cows, Laxmi's lamps and Bhai Tika — with a wish you can send.">
+  <title>Happy Tihar 🪔 — A Story of Light</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#story">Skip to the story</a>
+
+  <!-- Ambient background: stars, glows and a warm night sky (pure CSS) -->
+  <div class="ambient" aria-hidden="true">
+    <div class="stars" id="stars"></div>
+    <div class="glow glow--one"></div>
+    <div class="glow glow--two"></div>
+    <div class="glow glow--three"></div>
+  </div>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero" id="top">
+    <div class="garland garland--left" aria-hidden="true"></div>
+    <div class="garland garland--right" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <p class="eyebrow">Five days · one endless light</p>
+
+      <h1 class="hero__title">
+        <span class="hero__happy">Happy</span>
+        <span class="hero__tihar">Tihar</span>
+        <span class="hero__lamp" aria-hidden="true">🪔</span>
+      </h1>
+
+      <p class="hero__sub">
+        May this Tihar fill your home with light and your year with people who feel like
+        home. There is a story in these five days — scroll slowly.
+      </p>
+
+      <p class="hero__for">
+        A wish for
+        <label class="name-field">
+          <span class="sr-only">Name of the person you are wishing</span>
+          <input id="nameInput" type="text" maxlength="28" placeholder="someone dear" autocomplete="off" spellcheck="false">
+        </label>
+      </p>
+
+      <a class="scroll-cue" href="#story">
+        <span>Walk into the festival</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M12 4v14m0 0 6-6m-6 6-6-6" fill="none" stroke="currentColor"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================== INTRO ============================== -->
+    <section class="intro reveal" id="story" aria-labelledby="intro-title">
+      <p class="eyebrow eyebrow--center">The story</p>
+      <h2 id="intro-title">Tihar begins in the sky —<br>and ends at your door.</h2>
+      <p class="intro__text">
+        For five days, as the year turns dark and cold, we are asked to make room for light.
+        First the birds are fed. Then the guardians are honoured. Then the mothers.
+        Then the goddess. And on the last day, the people we love are marked with colour
+        and promised that they will never face the year alone.
+      </p>
+      <div class="day-chips" aria-label="The five days of Tihar">
+        <span>Kag Tihar</span>
+        <span>Kukur Tihar</span>
+        <span>Gai Tihar</span>
+        <span>Laxmi Puja</span>
+        <span>Bhai Tika</span>
+      </div>
+    </section>
+
+    <!-- ============================== SCENE 1 · CROWS ============================== -->
+    <section class="scene reveal" aria-labelledby="scene1-title">
+      <div class="scene__inner">
+        <div class="scene__copy">
+          <p class="day-tag"><span>Day one</span> Kag Tihar</p>
+          <h2 id="scene1-title">First, the <em>messengers</em></h2>
+          <p>
+            Before a single lamp is lit, we feed the crows. They are the first to wake,
+            the first to carry news across the valley. To honour them is to admit a quiet
+            truth: we are all connected by what we pass on. A kind word travels farther
+            than we think.
+          </p>
+          <p class="hint">
+            <span class="hint__dot" aria-hidden="true"></span>
+            Tap each crow to offer a grain of rice.
+          </p>
+        </div>
+
+        <div class="stage stage--crows">
+          <div class="wire-scene" role="group" aria-label="Three crows on a wire. Offer rice to each one.">
+            <svg class="wire" viewBox="0 0 420 70" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M-10 8 C 110 58, 310 58, 430 8" fill="none"
+                    stroke="rgba(232,194,122,.35)" stroke-width="1.5"/>
+            </svg>
+
+            <button class="crow" type="button" aria-pressed="false"
+                    aria-label="Offer rice to the first crow">
+              <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+                <path d="M40 82 L14 96 L34 98 Z" fill="#23131a"/>
+                <ellipse cx="60" cy="76" rx="26" ry="21" fill="#2a171d"/>
+                <path d="M44 68 Q 54 58 70 62 Q 62 78 46 80 Z" fill="#3b242c"/>
+                <circle cx="82" cy="52" r="13" fill="#2a171d"/>
+                <path d="M94 50 L114 55 L94 60 Z" fill="#e9a23b"/>
+                <circle cx="86" cy="49" r="2.2" fill="#ffe6b8"/>
+                <path d="M52 96 L50 108 M70 96 L72 108" stroke="#2a171d"
+                      stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M45 108 h10 M67 108 h10" stroke="#2a171d"
+                      stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <button class="crow crow--small" type="button" aria-pressed="false"
+                    aria-label="Offer rice to the second crow">
+              <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+                <path d="M40 82 L14 96 L34 98 Z" fill="#23131a"/>
+                <ellipse cx="60" cy="76" rx="26" ry="21" fill="#2a171d"/>
+                <path d="M44 68 Q 54 58 70 62 Q 62 78 46 80 Z" fill="#3b242c"/>
+                <circle cx="82" cy="52" r="13" fill="#2a171d"/>
+                <path d="M94 50 L114 55 L94 60 Z" fill="#e9a23b"/>
+                <circle cx="86" cy="49" r="2.2" fill="#ffe6b8"/>
+                <path d="M52 96 L50 108 M70 96 L72 108" stroke="#2a171d"
+                      stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M45 108 h10 M67 108 h10" stroke="#2a171d"
+                      stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <button class="crow crow--flip" type="button" aria-pressed="false"
+                    aria-label="Offer rice to the third crow">
+              <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+                <path d="M40 82 L14 96 L34 98 Z" fill="#23131a"/>
+                <ellipse cx="60" cy="76" rx="26" ry="21" fill="#2a171d"/>
+                <path d="M44 68 Q 54 58 70 62 Q 62 78 46 80 Z" fill="#3b242c"/>
+                <circle cx="82" cy="52" r="13" fill="#2a171d"/>
+                <path d="M94 50 L114 55 L94 60 Z" fill="#e9a23b"/>
+                <circle cx="86" cy="49" r="2.2" fill="#ffe6b8"/>
+                <path d="M52 96 L50 108 M70 96 L72 108" stroke="#2a171d"
+                      stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M45 108 h10 M67 108 h10" stroke="#2a171d"
+                      stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <p class="stage-note" id="crowLine" aria-live="polite">
+            Three crows wait on the wire. They seem to know something.
+          </p>
+          <div class="stage-count" id="crowCount">0 / 3 fed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SCENE 2 · DOGS ============================== -->
+    <section class="scene scene--flip reveal" aria-labelledby="scene2-title">
+      <div class="scene__inner">
+        <div class="scene__copy">
+          <p class="day-tag"><span>Day two</span> Kukur Tihar</p>
+          <h2 id="scene2-title">Then, the <em>guardians</em></h2>
+          <p>
+            On the second day, dogs are garlanded and marked with tika. Not because they
+            are gods, but because they have already been something better: loyal without
+            condition. The dog at your door has guarded your sleep, your secrets, your bad
+            days. Today, you guard its dignity.
+          </p>
+          <p class="hint">
+            <span class="hint__dot" aria-hidden="true"></span>
+            Tap the dog to place a marigold garland.
+          </p>
+        </div>
+
+        <div class="stage stage--dog">
+          <button class="dog" type="button" aria-pressed="false"
+                  aria-label="Place a marigold garland and tika on the dog">
+            <svg viewBox="0 0 260 260" aria-hidden="true" focusable="false">
+              <!-- tail -->
+              <path class="dog__tail" d="M82 190 Q 38 176 44 128" fill="none"
+                    stroke="#b8753a" stroke-width="16" stroke-linecap="round"/>
+              <!-- body and chest -->
+              <ellipse cx="132" cy="184" rx="60" ry="50" fill="#c98a4b"/>
+              <ellipse cx="132" cy="194" rx="34" ry="36" fill="#f2d4a8"/>
+              <!-- back paws -->
+              <ellipse cx="96" cy="228" rx="24" ry="14" fill="#b8753a"/>
+              <ellipse cx="168" cy="228" rx="24" ry="14" fill="#b8753a"/>
+              <!-- head -->
+              <circle cx="132" cy="104" r="46" fill="#d5965a"/>
+              <ellipse cx="92" cy="96" rx="16" ry="30" fill="#a9662f" transform="rotate(-18 92 96)"/>
+              <ellipse cx="172" cy="96" rx="16" ry="30" fill="#a9662f" transform="rotate(18 172 96)"/>
+              <!-- muzzle, nose, mouth -->
+              <ellipse cx="132" cy="120" rx="24" ry="18" fill="#f2d4a8"/>
+              <ellipse cx="132" cy="112" rx="7" ry="5" fill="#3a2320"/>
+              <path d="M132 118v6m0 0q-6 6-12 0m12 0q6 6 12 0" fill="none"
+                    stroke="#3a2320" stroke-width="2.4" stroke-linecap="round"/>
+              <!-- eyes and brows -->
+              <circle cx="114" cy="96" r="4" fill="#3a2320"/>
+              <circle cx="150" cy="96" r="4" fill="#3a2320"/>
+              <path d="M106 84q8-5 16-1M142 83q8-4 16 1" fill="none"
+                    stroke="#8a4f22" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- tika on the forehead -->
+              <g class="dog__tika">
+                <rect x="125" y="66" width="4" height="16" rx="2" fill="#d33a3a"/>
+                <rect x="130" y="64" width="4" height="18" rx="2" fill="#f2b134"/>
+                <rect x="135" y="66" width="4" height="16" rx="2" fill="#3f8f6b"/>
+              </g>
+              <!-- marigold garland -->
+              <g class="dog__garland">
+                <path d="M92 148 Q 150 180 208 148" fill="none"
+                      stroke="#e9a23b" stroke-width="3" opacity=".65"/>
+                <circle cx="94" cy="150" r="8" fill="#f7a52b"/>
+                <circle cx="108" cy="158" r="8" fill="#ffc85c"/>
+                <circle cx="122" cy="163" r="8" fill="#f7a52b"/>
+                <circle cx="136" cy="166" r="8" fill="#ffc85c"/>
+                <circle cx="150" cy="167" r="8" fill="#f7a52b"/>
+                <circle cx="164" cy="166" r="8" fill="#ffc85c"/>
+                <circle cx="178" cy="163" r="8" fill="#f7a52b"/>
+                <circle cx="192" cy="158" r="8" fill="#ffc85c"/>
+                <circle cx="206" cy="150" r="8" fill="#f7a52b"/>
+              </g>
+            </svg>
+          </button>
+
+          <p class="stage-note" id="dogLine" aria-live="polite">
+            The dog sits at the gate, tail sweeping the dust.
+          </p>
+          <div class="stage-count">A guardian deserves flowers</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SCENE 3 · COWS & LAXMI ============================== -->
+    <section class="scene reveal" aria-labelledby="scene3-title">
+      <div class="scene__inner">
+        <div class="scene__copy">
+          <p class="day-tag"><span>Day three</span> Gai Tihar &amp; Laxmi Puja</p>
+          <h2 id="scene3-title">The mothers,<br>and the <em>lamps</em></h2>
+          <p>
+            The cow is honoured as a mother — for milk, for patience, for the quiet work of
+            keeping a household alive. By evening the house is washed, the threshold is
+            decorated, and lamps are set at every door. Laxmi does not enter a house that is
+            only rich. She enters where someone has bothered to make room — with light, with
+            cleanliness, with care.
+          </p>
+          <p class="hint">
+            <span class="hint__dot" aria-hidden="true"></span>
+            Light all five diyos. Each flame is a welcome.
+          </p>
+        </div>
+
+        <div class="stage stage--lamps" id="lampStage">
+          <!-- Rangoli / mandala drawn entirely in SVG -->
+          <svg class="mandala" viewBox="0 0 400 400" aria-hidden="true">
+            <defs>
+              <path id="petal" d="M200 58 C 218 92 218 130 200 164 C 182 130 182 92 200 58 Z"/>
+            </defs>
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <circle class="draw-ring" cx="200" cy="200" r="48" pathLength="1"/>
+              <circle cx="200" cy="200" r="92" stroke-dasharray="3 8"/>
+              <circle class="draw-ring" cx="200" cy="200" r="140" pathLength="1"/>
+              <circle cx="200" cy="200" r="182" stroke-dasharray="1 10"/>
+            </g>
+            <g fill="rgba(247,165,43,.05)" stroke="currentColor" stroke-width="1">
+              <use href="#petal"/>
+              <use href="#petal" transform="rotate(30 200 200)"/>
+              <use href="#petal" transform="rotate(60 200 200)"/>
+              <use href="#petal" transform="rotate(90 200 200)"/>
+              <use href="#petal" transform="rotate(120 200 200)"/>
+              <use href="#petal" transform="rotate(150 200 200)"/>
+              <use href="#petal" transform="rotate(180 200 200)"/>
+              <use href="#petal" transform="rotate(210 200 200)"/>
+              <use href="#petal" transform="rotate(240 200 200)"/>
+              <use href="#petal" transform="rotate(270 200 200)"/>
+              <use href="#petal" transform="rotate(300 200 200)"/>
+              <use href="#petal" transform="rotate(330 200 200)"/>
+            </g>
+            <circle class="draw-ring" cx="200" cy="200" r="22" fill="rgba(247,165,43,.12)" stroke="currentColor" stroke-width="1" pathLength="1"/>
+          </svg>
+
+          <div class="lamps" role="group" aria-label="Five diyos. Light each one.">
+            <button class="lamp" type="button" aria-pressed="false" data-word="Welcome"
+                    data-line="A lamp at the door says: come in, you were expected.">
+              <svg class="diyo" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                <circle class="diyo__glow" cx="40" cy="30" r="20"/>
+                <path class="diyo__flame" d="M40 14 C47 25 50 33 40 44 C30 33 33 25 40 14 Z"/>
+                <path class="diyo__flame-inner" d="M40 27 C43.5 33 44.5 37 40 42 C35.5 37 36.5 33 40 27 Z"/>
+                <path class="diyo__bowl" d="M12 46 C16 62 64 62 68 46 C56 53 24 53 12 46 Z"/>
+                <ellipse class="diyo__rim" cx="40" cy="46" rx="28" ry="5"/>
+                <path class="diyo__base" d="M31 61 h18 l-5 7 h-8 z"/>
+                <path d="M19 49 q21 9 42 0" fill="none" stroke="#e08a5b" stroke-width="1.2" opacity=".5"/>
+              </svg>
+              <span class="lamp-word">Welcome</span>
+            </button>
+
+            <button class="lamp" type="button" aria-pressed="false" data-word="Health"
+                    data-line="A lamp for health: may the body you live in be treated gently this year.">
+              <svg class="diyo" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                <circle class="diyo__glow" cx="40" cy="30" r="20"/>
+                <path class="diyo__flame" d="M40 14 C47 25 50 33 40 44 C30 33 33 25 40 14 Z"/>
+                <path class="diyo__flame-inner" d="M40 27 C43.5 33 44.5 37 40 42 C35.5 37 36.5 33 40 27 Z"/>
+                <path class="diyo__bowl" d="M12 46 C16 62 64 62 68 46 C56 53 24 53 12 46 Z"/>
+                <ellipse class="diyo__rim" cx="40" cy="46" rx="28" ry="5"/>
+                <path class="diyo__base" d="M31 61 h18 l-5 7 h-8 z"/>
+                <path d="M19 49 q21 9 42 0" fill="none" stroke="#e08a5b" stroke-width="1.2" opacity=".5"/>
+              </svg>
+              <span class="lamp-word">Health</span>
+            </button>
+
+            <button class="lamp" type="button" aria-pressed="false" data-word="Courage"
+                    data-line="A lamp for courage: may you do the brave thing, even with a shaking voice.">
+              <svg class="diyo" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                <circle class="diyo__glow" cx="40" cy="30" r="20"/>
+                <path class="diyo__flame" d="M40 14 C47 25 50 33 40 44 C30 33 33 25 40 14 Z"/>
+                <path class="diyo__flame-inner" d="M40 27 C43.5 33 44.5 37 40 42 C35.5 37 36.5 33 40 27 Z"/>
+                <path class="diyo__bowl" d="M12 46 C16 62 64 62 68 46 C56 53 24 53 12 46 Z"/>
+                <ellipse class="diyo__rim" cx="40" cy="46" rx="28" ry="5"/>
+                <path class="diyo__base" d="M31 61 h18 l-5 7 h-8 z"/>
+                <path d="M19 49 q21 9 42 0" fill="none" stroke="#e08a5b" stroke-width="1.2" opacity=".5"/>
+              </svg>
+              <span class="lamp-word">Courage</span>
+            </button>
+
+            <button class="lamp" type="button" aria-pressed="false" data-word="Kindness"
+                    data-line="A lamp for kindness: may it return to you when you least expect it.">
+              <svg class="diyo" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                <circle class="diyo__glow" cx="40" cy="30" r="20"/>
+                <path class="diyo__flame" d="M40 14 C47 25 50 33 40 44 C30 33 33 25 40 14 Z"/>
+                <path class="diyo__flame-inner" d="M40 27 C43.5 33 44.5 37 40 42 C35.5 37 36.5 33 40 27 Z"/>
+                <path class="diyo__bowl" d="M12 46 C16 62 64 62 68 46 C56 53 24 53 12 46 Z"/>
+                <ellipse class="diyo__rim" cx="40" cy="46" rx="28" ry="5"/>
+                <path class="diyo__base" d="M31 61 h18 l-5 7 h-8 z"/>
+                <path d="M19 49 q21 9 42 0" fill="none" stroke="#e08a5b" stroke-width="1.2" opacity=".5"/>
+              </svg>
+              <span class="lamp-word">Kindness</span>
+            </button>
+
+            <button class="lamp" type="button" aria-pressed="false" data-word="Enough"
+                    data-line="A lamp for enough: not more, not less — just enough.">
+              <svg class="diyo" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                <circle class="diyo__glow" cx="40" cy="30" r="20"/>
+                <path class="diyo__flame" d="M40 14 C47 25 50 33 40 44 C30 33 33 25 40 14 Z"/>
+                <path class="diyo__flame-inner" d="M40 27 C43.5 33 44.5 37 40 42 C35.5 37 36.5 33 40 27 Z"/>
+                <path class="diyo__bowl" d="M12 46 C16 62 64 62 68 46 C56 53 24 53 12 46 Z"/>
+                <ellipse class="diyo__rim" cx="40" cy="46" rx="28" ry="5"/>
+                <path class="diyo__base" d="M31 61 h18 l-5 7 h-8 z"/>
+                <path d="M19 49 q21 9 42 0" fill="none" stroke="#e08a5b" stroke-width="1.2" opacity=".5"/>
+              </svg>
+              <span class="lamp-word">Enough</span>
+            </button>
+          </div>
+
+          <p class="stage-note" id="lampLine" aria-live="polite">
+            Five diyos wait in the dark. The mandala is holding its breath.
+          </p>
+          <div class="stage-count" id="lampCount">0 of 5 lit</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SCENE 4 · BHAI TIKA ============================== -->
+    <section class="scene scene--flip reveal" aria-labelledby="scene4-title">
+      <div class="scene__inner">
+        <div class="scene__copy">
+          <p class="day-tag"><span>Day five</span> Bhai Tika</p>
+          <h2 id="scene4-title">Last, the <em>promise</em></h2>
+          <p>
+            On the final day, sisters draw a seven-coloured tika on their brothers'
+            foreheads and tie a thread of protection around their wrists. The old story says
+            Yamuna kept her brother Yama waiting until the tika was complete — and death,
+            for once, was patient. The meaning is simpler: <em>I will stand in the way of
+            anything that comes for you.</em> Brothers return the blessing. Chosen family
+            counts too.
+          </p>
+          <p class="hint">
+            <span class="hint__dot" aria-hidden="true"></span>
+            Tap the portrait to receive the tika and the blessing.
+          </p>
+        </div>
+
+        <div class="stage stage--tika">
+          <button class="portrait" type="button" aria-pressed="false"
+                  aria-label="Receive the seven-colour tika and a blessing">
+            <svg viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+              <circle class="portrait__halo" cx="150" cy="150" r="120" fill="none"
+                      stroke="rgba(247,165,43,.3)" stroke-width="1" stroke-dasharray="2 9"/>
+              <!-- shoulders and neck -->
+              <path d="M50 300 Q 62 222 150 222 Q 238 222 250 300 Z" fill="#7d1f33"/>
+              <rect x="132" y="188" width="36" height="42" rx="14" fill="#c07f52"/>
+              <!-- head -->
+              <ellipse cx="150" cy="140" rx="58" ry="68" fill="#d99a6c"/>
+              <circle cx="92" cy="146" r="10" fill="#c07f52"/>
+              <circle cx="208" cy="146" r="10" fill="#c07f52"/>
+              <!-- hair -->
+              <path d="M92 140 Q 86 66 150 60 Q 214 66 208 140 Q 200 100 150 96 Q 100 100 92 140 Z"
+                    fill="#2b171d"/>
+              <path d="M92 120 Q 82 150 92 178 Q 98 142 102 128 Z" fill="#2b171d"/>
+              <path d="M208 120 Q 218 150 208 178 Q 202 142 198 128 Z" fill="#2b171d"/>
+              <!-- face -->
+              <path d="M116 132 q14 -6 28 -1" fill="none" stroke="#7a4a2e" stroke-width="3" stroke-linecap="round"/>
+              <path d="M156 131 q14 -5 28 1" fill="none" stroke="#7a4a2e" stroke-width="3" stroke-linecap="round"/>
+              <path d="M118 148 q12 7 24 0" fill="none" stroke="#3a2320" stroke-width="3.4" stroke-linecap="round"/>
+              <path d="M158 148 q12 7 24 0" fill="none" stroke="#3a2320" stroke-width="3.4" stroke-linecap="round"/>
+              <path d="M150 156 q-5 10 2 12" fill="none" stroke="#a86844" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M134 182 q16 11 32 0" fill="none" stroke="#8f3a3a" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="112" cy="170" r="9" fill="rgba(196,92,92,.22)"/>
+              <circle cx="188" cy="170" r="9" fill="rgba(196,92,92,.22)"/>
+              <!-- seven-colour tika -->
+              <g class="portrait__tika">
+                <rect x="133" y="106" width="4" height="22" rx="2" fill="#c62839"/>
+                <rect x="138" y="105" width="4" height="23" rx="2" fill="#f2a72e"/>
+                <rect x="143" y="104" width="4" height="24" rx="2" fill="#3f8f6b"/>
+                <rect x="148" y="103" width="4" height="25" rx="2" fill="#3c6e9e"/>
+                <rect x="153" y="104" width="4" height="24" rx="2" fill="#f7f0e4"/>
+                <rect x="158" y="105" width="4" height="23" rx="2" fill="#d4622a"/>
+                <rect x="163" y="106" width="4" height="22" rx="2" fill="#7a4a8c"/>
+              </g>
+              <!-- marigold garland -->
+              <g class="portrait__garland">
+                <path d="M100 224 Q 150 252 200 224" fill="none"
+                      stroke="#e9a23b" stroke-width="3" opacity=".6"/>
+                <circle cx="104" cy="226" r="8" fill="#f7a52b"/>
+                <circle cx="116" cy="234" r="8" fill="#ffc85c"/>
+                <circle cx="128" cy="240" r="8" fill="#f7a52b"/>
+                <circle cx="140" cy="244" r="8" fill="#ffc85c"/>
+                <circle cx="150" cy="245" r="8" fill="#f7a52b"/>
+                <circle cx="160" cy="244" r="8" fill="#ffc85c"/>
+                <circle cx="172" cy="240" r="8" fill="#f7a52b"/>
+                <circle cx="184" cy="234" r="8" fill="#ffc85c"/>
+                <circle cx="196" cy="226" r="8" fill="#f7a52b"/>
+              </g>
+            </svg>
+            <span class="portrait__hint" id="portraitHint">tap to receive the tika</span>
+          </button>
+
+          <p class="stage-note" id="tikaLine" aria-live="polite">
+            A sister's hand hovers, seven colours on her fingertips.
+          </p>
+          <div class="stage-count">A thread that outlasts the festival</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RIVER OF LIGHTS ============================== -->
+    <section class="river reveal" aria-labelledby="river-title">
+      <div class="river__head">
+        <p class="eyebrow">The river of lights</p>
+        <h2 id="river-title">Set a wish<br>on the water</h2>
+        <p>
+          Light has a way of travelling. Set a diyo adrift and let it carry what you cannot
+          say out loud — a hope, a name, a small unfinished prayer.
+        </p>
+        <button class="ghost-btn" id="addLamp" type="button">Float a diyo</button>
+      </div>
+
+      <div class="river__wrap">
+        <canvas id="riverCanvas" aria-label="A dark river with floating diyos. Tap the water to add a lamp."></canvas>
+        <p class="river__caption" id="riverCaption" aria-live="polite">Each lamp carries a quiet wish.</p>
+      </div>
+    </section>
+
+    <!-- ============================== FINAL WISH ============================== -->
+    <section class="final reveal" id="wish" aria-labelledby="wish-title">
+      <div class="wish-card">
+        <p class="eyebrow eyebrow--center">The last lamp</p>
+        <h2 id="wish-title">Dear <span class="accent" data-name>friend</span>,</h2>
+        <p class="wish-text" id="wishText" aria-live="polite">
+          May this Tihar leave a lamp burning in every corner you call home — and may you
+          always find your way back to it.
+        </p>
+
+        <button class="wish-btn" id="sendWish" type="button">
+          <span aria-hidden="true">🪔</span>
+          Send a Tihar Wish
+        </button>
+        <p class="wish-hint">Each tap brings a new blessing into the room.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__line">🪔 Happy Tihar — may the light find you.</p>
+    <p>Made offline with CSS, SVG, and a little affection.</p>
+  </footer>
+
+  <!-- Full-screen canvas for the petal / sparkle celebration -->
+  <canvas id="burstCanvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>

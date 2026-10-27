@@ -1,0 +1,657 @@
+/* ============================================================
+   Happy Tihar 🪔 — style.css
+   Festival palette: crimson reds, marigold orange-yellow,
+   warm gold, soft gradients. System fonts only. Pure CSS art.
+   ============================================================ */
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  --night: #1b0b2e;          /* deep indigo night        */
+  --night-2: #2b0a3d;        /* plum shadow              */
+  --crimson: #a4133c;        /* crimson red              */
+  --crimson-deep: #7f1d3a;   /* deep crimson (SVG fill)  */
+  --marigold: #ff9f1c;       /* marigold orange-yellow   */
+  --gold: #ffd166;           /* warm gold                */
+  --gold-soft: #ffe29a;      /* soft gold                */
+  --cream: #fff3d6;          /* candlelight cream (text) */
+  --glass: rgba(24, 9, 36, .55);           /* card glass          */
+  --gold-line: rgba(255, 209, 102, .35);   /* card border         */
+}
+
+/* ---------- 2. Base ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--cream);
+  line-height: 1.6;
+  /* One continuous night-to-festival gradient behind the whole story */
+  background: linear-gradient(180deg,
+    var(--night) 0%,
+    #3d1152 20%,
+    #7a1538 52%,
+    #4a0f33 76%,
+    #14051f 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+p { margin-bottom: .8rem; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- 3. Shared components ---------- */
+
+/* Gold gradient display text */
+.glow-word {
+  background: linear-gradient(120deg, var(--gold-soft), var(--marigold) 55%, var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 183, 3, .55));
+}
+
+/* Section day-tag chip */
+.chip {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-line);
+  background: rgba(255, 183, 3, .08);
+  border-radius: 999px;
+  padding: .35rem .9rem;
+  margin-bottom: 1.1rem;
+}
+
+/* Buttons — marigold gradient pill */
+.btn {
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #401507;
+  background: linear-gradient(180deg, var(--gold), var(--marigold));
+  border: 0;
+  border-radius: 999px;
+  padding: .85rem 1.7rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 159, 28, .35),
+              inset 0 1px 0 rgba(255, 255, 255, .5);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.btn:active { transform: translateY(0) scale(.97); }
+.btn:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 2px; }
+.btn:disabled { opacity: .85; cursor: default; transform: none; }
+.big-btn { font-size: 1.1rem; padding: 1rem 2.2rem; margin-top: 1.2rem; }
+
+/* Quiet supporting text */
+.fine { color: rgba(255, 243, 214, .82); }
+
+/* Hidden lines that fade in via JS (.reveal) */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .9s ease .15s, transform .9s ease .15s;
+}
+.fade.reveal { opacity: 1; transform: none; }
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.display {
+  font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: .01em;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, .45);
+}
+
+.diya-emoji {
+  display: inline-block;
+  animation: breathe 3.2s ease-in-out infinite;
+}
+@keyframes breathe {
+  50% { transform: scale(1.18) rotate(-4deg); }
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  max-width: 34ch;
+  margin-top: 1.4rem;
+  color: rgba(255, 243, 214, .92);
+}
+
+.scroll-hint {
+  margin-top: 2.2rem;
+  font-size: .9rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  animation: hint 2.2s ease-in-out infinite;
+}
+@keyframes hint { 50% { transform: translateY(8px); opacity: .7; } }
+
+/* Marigold garland arc across the top */
+.garland {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 2.2vw, 18px);
+  pointer-events: none;
+}
+.garland span {
+  width: clamp(12px, 2.4vw, 18px);
+  height: clamp(12px, 2.4vw, 18px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #ffe9a8, #ffb703 55%, #d97706);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+}
+/* A gentle sagging curve via per-flower offsets */
+.garland span:nth-child(1),  .garland span:nth-child(13) { margin-top: 42px; }
+.garland span:nth-child(2),  .garland span:nth-child(12) { margin-top: 30px; }
+.garland span:nth-child(3),  .garland span:nth-child(11) { margin-top: 19px; }
+.garland span:nth-child(4),  .garland span:nth-child(10) { margin-top: 11px; }
+.garland span:nth-child(5),  .garland span:nth-child(9)  { margin-top: 5px; }
+.garland span:nth-child(6),  .garland span:nth-child(8)  { margin-top: 2px; }
+.garland span:nth-child(7)                                  { margin-top: 0; }
+
+/* Twinkling stars */
+.stars span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cream);
+  opacity: .7;
+  animation: twinkle 3.4s ease-in-out infinite;
+}
+@keyframes twinkle { 50% { opacity: .12; transform: scale(.55); } }
+.stars span:nth-child(1) { left: 8%;  top: 14%; animation-delay: .1s; }
+.stars span:nth-child(2) { left: 20%; top: 30%; animation-delay: .9s; }
+.stars span:nth-child(3) { left: 86%; top: 18%; animation-delay: 1.6s; }
+.stars span:nth-child(4) { left: 92%; top: 42%; animation-delay: .5s; }
+.stars span:nth-child(5) { left: 12%; top: 62%; animation-delay: 2.2s; }
+.stars span:nth-child(6) { left: 76%; top: 66%; animation-delay: 1.2s; }
+
+/* ---------- 5. The diyo (oil lamp) — pure CSS ---------- */
+.diyo {
+  position: relative;
+  width: 86px;
+  height: 64px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.diyo .bowl {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 86px;
+  height: 26px;
+  background: linear-gradient(180deg, #d9722c, #7a2d10 70%, #521c08);
+  border-radius: 0 0 48px 48px / 0 0 26px 26px;
+  box-shadow: inset 0 3px 5px rgba(255, 255, 255, .30), 0 4px 8px rgba(0, 0, 0, .5);
+}
+.diyo .bowl::before {                 /* rim */
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 86px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e8863a;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, .35);
+}
+
+.diyo .wick {
+  position: absolute;
+  bottom: 21px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: #2b1408;
+}
+
+.diyo .flame {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  width: 18px;
+  height: 30px;
+  margin-left: -9px;
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  background: linear-gradient(#fff8e1 8%, var(--gold) 32%, #ff8b1f 62%, #e63e12 90%);
+  opacity: 0;
+  transform: scale(.2);
+  transform-origin: 50% 100%;
+  transition: opacity .35s ease, transform .5s cubic-bezier(.2, 1.6, .4, 1);
+}
+.diyo .flame i {                       /* inner bright core */
+  position: absolute;
+  inset: 4px 5px 2px 5px;
+  border-radius: inherit;
+  background: linear-gradient(#fff, #ffe38a 60%, #ffab2e);
+  opacity: .85;
+  filter: blur(1px);
+}
+
+.diyo .glow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 96px;
+  height: 96px;
+  margin-left: -48px;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255, 170, 50, .55), rgba(255, 170, 50, 0) 70%);
+  opacity: 0;
+  transition: opacity .6s ease;
+}
+
+/* Lit state: flame catches with a pop + steady flicker */
+.diyo.lit .flame {
+  opacity: 1;
+  transform: scale(1);
+  animation: flick 1.7s infinite ease-in-out;
+}
+.diyo.lit .glow { opacity: 1; }
+@keyframes flick {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25%      { transform: scale(1.08, .94) rotate(-3deg); }
+  50%      { transform: scale(.92, 1.12) rotate(2deg); }
+  75%      { transform: scale(1.05, .98) rotate(-1deg); }
+}
+
+/* Bigger decorative hero diyo */
+.diyo.hero-diyo { transform: scale(1.7); margin: 3.2rem 0 2.4rem; pointer-events: none; }
+
+/* ---------- 6. Story scenes ---------- */
+.scene {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9vh 5vw;
+}
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--glass);
+  border: 1px solid var(--gold-line);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 4.5vw, 2.7rem);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .35);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  /* Scroll reveal: JS adds .show on the parent .scene */
+  opacity: 0;
+  transform: translateY(42px) scale(.985);
+  transition: opacity .9s ease, transform .9s ease;
+}
+.scene.show .card { opacity: 1; transform: none; }
+
+.card.center { text-align: center; }
+.card h2 { font-size: clamp(1.6rem, 4.5vw, 2.3rem); margin-bottom: 1rem; }
+
+.card-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.4rem, 4vw, 2.6rem);
+  flex-wrap: wrap;
+}
+.words { flex: 1 1 240px; }
+
+/* Round gold badge holding an animal silhouette */
+.art { flex: 0 0 auto; margin: 0 auto; }
+.badge {
+  width: clamp(140px, 30vw, 190px);
+  height: clamp(140px, 30vw, 190px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 25%, var(--gold-soft), #ffb703 45%, #c1121f 105%);
+  box-shadow: 0 0 44px rgba(255, 183, 3, .30), inset 0 0 24px rgba(124, 10, 30, .35);
+}
+.art-svg { width: 78%; height: auto; fill: var(--crimson-deep); }
+
+/* ---------- 7. Mandala (rangoli) — draws itself on reveal ---------- */
+.mandala { width: min(240px, 56vw); height: auto; }
+
+.ring {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;               /* undrawn */
+  opacity: .9;
+}
+.scene.show .ring { animation: draw 1.7s ease forwards; }
+.scene.show .ring:nth-of-type(2) { animation-delay: .35s; }
+.scene.show .ring:nth-of-type(3) { animation-delay: .7s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.petals ellipse {
+  fill: var(--marigold);
+  opacity: .85;
+  transform: scale(0);                  /* unbloomed */
+  transition: transform .7s cubic-bezier(.2, 1.5, .4, 1);
+}
+.scene.show .petals ellipse { transform: scale(1); }
+/* Stagger the petal bloom, outer ring */
+.scene.show .petals:not(.p2) ellipse:nth-child(1)  { transition-delay: .30s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(2)  { transition-delay: .36s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(3)  { transition-delay: .42s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(4)  { transition-delay: .48s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(5)  { transition-delay: .54s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(6)  { transition-delay: .60s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(7)  { transition-delay: .66s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(8)  { transition-delay: .72s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(9)  { transition-delay: .78s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(10) { transition-delay: .84s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(11) { transition-delay: .90s; }
+.scene.show .petals:not(.p2) ellipse:nth-child(12) { transition-delay: .96s; }
+/* Inner ring blooms after */
+.scene.show .petals.p2 ellipse:nth-child(1)  { transition-delay: 1.05s; }
+.scene.show .petals.p2 ellipse:nth-child(2)  { transition-delay: 1.11s; }
+.scene.show .petals.p2 ellipse:nth-child(3)  { transition-delay: 1.17s; }
+.scene.show .petals.p2 ellipse:nth-child(4)  { transition-delay: 1.23s; }
+.scene.show .petals.p2 ellipse:nth-child(5)  { transition-delay: 1.29s; }
+.scene.show .petals.p2 ellipse:nth-child(6)  { transition-delay: 1.35s; }
+.scene.show .petals.p2 ellipse:nth-child(7)  { transition-delay: 1.41s; }
+.scene.show .petals.p2 ellipse:nth-child(8)  { transition-delay: 1.47s; }
+
+.m-center {
+  fill: var(--cream);
+  box-shadow: 0 0 10px var(--gold);
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+
+/* ---------- 8. Interactive lamp section ---------- */
+.lamp-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(.6rem, 3vw, 2.2rem);
+  margin: 2rem 0 .6rem;
+}
+.lamp { display: grid; place-items: end center; }
+
+.lamp .diyo:not(.lit):hover .bowl { filter: brightness(1.15); }
+.lamp .diyo:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 4px; border-radius: 12px; }
+
+.lamp-count {
+  text-align: center;
+  font-size: .9rem;
+  letter-spacing: .08em;
+  color: var(--gold-soft);
+  min-height: 1.4em;
+}
+
+.lamp-message {
+  text-align: center;
+  font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+  font-style: italic;
+  color: var(--gold);
+  margin-top: .4rem;
+}
+
+/* --- The river: diyos floating on water --- */
+.river {
+  position: relative;
+  height: 150px;
+  margin-top: 1.8rem;
+  border-radius: 16px;
+  border: 1px solid var(--gold-line);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(10, 10, 40, .75), rgba(32, 8, 52, .85));
+}
+/* Drifting wave shimmer */
+.river::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg,
+      rgba(255, 243, 214, .06) 0 2px, transparent 2px 15px);
+  animation: shimmer 7s linear infinite;
+}
+@keyframes shimmer { to { background-position: 0 30px; } }
+
+.boat {
+  position: absolute;
+  width: 34px;
+  height: 30px;
+  animation: drift 11s ease-in-out infinite;
+}
+.boat .raft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(180deg, #9c7a3e, #4a3a17);
+  border-radius: 0 0 60% 60% / 0 0 90% 90%;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .5);
+}
+.boat .boat-flame {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 11px;
+  height: 17px;
+  margin-left: -5.5px;
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  background: linear-gradient(#fff8e1 8%, var(--gold) 35%, #ff8b1f 70%, #e63e12 92%);
+  animation: flick 1.5s infinite ease-in-out;
+  transform-origin: 50% 100%;
+}
+.boat .boat-flame i {
+  position: absolute;
+  inset: 3px 3px 2px 3px;
+  border-radius: inherit;
+  background: linear-gradient(#fff, #ffe38a 60%, #ffab2e);
+  opacity: .85;
+  filter: blur(.8px);
+}
+.boat .boat-glow {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255, 170, 50, .5), rgba(255, 170, 50, 0) 70%);
+}
+/* Each boat drifts at its own pace & path */
+.boat.b1 { left: 8%;  top: 34%; animation-duration: 12s; }
+.boat.b2 { left: 46%; top: 18%; animation-duration: 9s;  animation-delay: -3s; }
+.boat.b3 { left: 72%; top: 52%; animation-duration: 14s; animation-delay: -6s; }
+@keyframes drift {
+  0%   { transform: translate(0, 0) rotate(-2deg); }
+  33%  { transform: translate(7vw, -4px) rotate(2deg); }
+  66%  { transform: translate(2vw, 3px) rotate(-1deg); }
+  100% { transform: translate(9vw, 0) rotate(2deg); }
+}
+
+/* ---------- 9. Bhai Tika: forehead + seven-coloured tika ---------- */
+.forehead {
+  position: relative;
+  width: 76px;
+  height: 128px;
+  border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%;
+  background: linear-gradient(160deg, #e8b689, #c98d5f 70%, #a86e42);
+  box-shadow: inset 0 0 18px rgba(120, 70, 30, .45), 0 6px 18px rgba(0, 0, 0, .35);
+}
+.tdot {
+  position: absolute;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  margin-left: -5.5px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .35);
+  transform: scale(0);
+  transition: transform .4s cubic-bezier(.2, 1.8, .4, 1);
+}
+/* The traditional seven colours, top to bottom */
+.tdot.t1 { top: 13%; background: var(--gold); }
+.tdot.t2 { top: 25%; background: var(--marigold); }
+.tdot.t3 { top: 37%; background: #e63946; }
+.tdot.t4 { top: 49%; background: #ff6d9a; }
+.tdot.t5 { top: 61%; background: #43aa8b; }
+.tdot.t6 { top: 73%; background: #fff3d6; }
+.tdot.t7 { top: 85%; background: #58a6ff; }
+/* Stagger the dots when applied */
+.forehead.applied .t1 { transition-delay: 0s;   }
+.forehead.applied .t2 { transition-delay: .1s;  }
+.forehead.applied .t3 { transition-delay: .2s;  }
+.forehead.applied .t4 { transition-delay: .3s;  }
+.forehead.applied .t5 { transition-delay: .4s;  }
+.forehead.applied .t6 { transition-delay: .5s;  }
+.forehead.applied .t7 { transition-delay: .6s;  }
+.forehead.applied .tdot { transform: scale(1); }
+
+#tika-btn { margin-top: .6rem; }
+#tika-blessing {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+/* ---------- 10. Final wish section ---------- */
+.final-line {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 3.6vw, 1.7rem);
+  color: var(--gold);
+  margin: .4rem 0 1.4rem;
+}
+
+.name-label {
+  display: block;
+  font-size: .9rem;
+  letter-spacing: .05em;
+  color: rgba(255, 243, 214, .85);
+  margin-bottom: 1.4rem;
+}
+#name-input {
+  display: block;
+  margin: .5rem auto 0;
+  width: min(300px, 80%);
+  font: inherit;
+  color: var(--cream);
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid var(--gold-line);
+  border-radius: 12px;
+  padding: .65rem .9rem;
+  text-align: center;
+}
+#name-input::placeholder { color: rgba(255, 243, 214, .45); }
+#name-input:focus { outline: 2px solid var(--gold); }
+
+.wish-box {
+  display: grid;
+  place-items: center;
+  min-height: 6rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 183, 3, .08);
+  border: 1px dashed rgba(255, 209, 102, .55);
+  border-radius: 16px;
+  margin-bottom: .4rem;
+}
+.blessing {
+  font-size: clamp(1.05rem, 3vw, 1.25rem);
+  font-style: italic;
+  color: var(--gold-soft);
+  text-align: center;
+}
+.blessing.pop { animation: pop .5s ease both; }
+@keyframes pop {
+  from { opacity: 0; transform: translateY(10px) scale(.95); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- 11. Particle burst layer (petals + sparks) ---------- */
+#fx {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+.petal, .spark { position: absolute; }
+
+.petal {
+  width: var(--s, 12px);
+  height: calc(var(--s, 12px) * .72);
+  border-radius: 60% 40% 60% 40% / 70% 40% 70% 40%;
+  box-shadow: 0 0 5px rgba(255, 159, 28, .45);
+  animation: fly var(--dur, 1.2s) ease-out both;
+}
+.spark {
+  width: var(--s, 5px);
+  height: var(--s, 5px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff8e1, var(--gold) 60%, transparent);
+  animation: fly var(--dur, 1s) ease-out both;
+}
+@keyframes fly {
+  from { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+  70%  { opacity: .9; }
+  to   {
+    transform: translate(var(--dx, 0), var(--dy, 120px)) rotate(var(--rot, 360deg)) scale(.7);
+    opacity: 0;
+  }
+}
+
+/* ---------- 12. Footer ---------- */
+footer {
+  text-align: center;
+  padding: 2.5rem 1rem 3.5rem;
+  font-size: .85rem;
+  color: rgba(255, 243, 214, .6);
+}
+
+/* ---------- 13. Accessibility: tame the motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .garland, .stars span, .boat, .scroll-hint, .diya-emoji { animation: none !important; }
+  .river::after { animation: none !important; }
+  .diyo.lit .flame, .boat .boat-flame { animation: none !important; }
+}
+
+/* ---------- 14. Small screens ---------- */
+@media (max-width: 560px) {
+  .scene { padding: 7vh 4vw; min-height: auto; }
+  .card-inner { justify-content: center; text-align: center; }
+  .art { margin-bottom: .6rem; }
+  #name-input { margin-inline: auto; }
+  .display { font-size: clamp(2.6rem, 13vw, 3.6rem); }
+}
