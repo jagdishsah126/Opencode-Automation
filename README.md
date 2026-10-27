@@ -1,5 +1,8 @@
 # Opencode Automation
 
+Simple Collection of Scripts Where You can Paste a Prompt and then Choose
+Models — the runner prepares everything for you.
+
 Batch-test models with [opencode](https://opencode.ai): one prompt, many models,
 each model builds in its own folder. Prompt in, results out, one command.
 
